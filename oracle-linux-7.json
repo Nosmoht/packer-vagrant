@@ -1,0 +1,51 @@
+{
+	"variables":{
+		"iso_directory":"/home/ntbc/iso",
+		"harddisk_size_mb":49152,
+		"vm_name":"oracle-linux",
+		"output_file":"ntbc-oel7.vbox",
+		"compression":6
+	},
+	"builders":[
+		{
+			"vm_name":"{{user `vm_name`}}",
+			"output_directory":"build/{{user `vm_name`}}",
+			"type":"virtualbox-iso",
+			"virtualbox_version_file":".vbox_version",
+			"headless":false,
+			"guest_os_type":"Oracle_64",
+			"hard_drive_interface":"sata",
+			"disk_size":"{{user `harddisk_size_mb`}}",
+			"iso_url":"{{user `iso_directory`}}/V46135-01.iso",
+			"iso_checksum":"14107114f3eece76d16e5ec3fee5f524b09f9829b0ac38474ee676ddd4d2b9c2",
+			"iso_checksum_type":"sha256",
+			"boot_command":[
+				"<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks-oracle-linux-7.cfg<enter><wait>"
+			],
+			"boot_wait":"12s",
+			"http_directory":"http",
+			"guest_additions_path":"VBoxGuestAdditions_{{.Version}}.iso",
+			"ssh_username":"vagrant",
+			"ssh_password":"vagrant",
+			"ssh_port":22,
+			"ssh_wait_timeout":"10000s",
+			"vboxmanage":[
+				[
+					"modifyvm",
+					"{{.Name}}",
+					"--memory",
+					"512"
+				],
+				[
+					"modifyvm",
+					"{{.Name}}",
+					"--cpus",
+					"1"
+				]
+				
+			],
+			"shutdown_command":"echo 'vagrant'|sudo -S /sbin/halt -h -p"
+		}
+		
+	]
+}
