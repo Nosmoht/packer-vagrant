@@ -3,5 +3,6 @@
 	"iso_checksum_type":"sha256",
 	"iso_file":"/home/ntbc/iso/V46135-01.iso",
 	"kickstart_file":"ks-oracle-linux-7.cfg",
-	"output_file":"ntbc-oracle-linux-7.iso"
+	"output_file":"ntbc-oracle-linux-7.iso",
+	"vm_name":"packer-oracle-linux-7"
 }
