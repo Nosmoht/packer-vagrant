@@ -53,12 +53,16 @@
     "compression": 6,
     "cpus": 1,
     "harddisk_size_mb": 49152,
+    "iso_checksum": "",
+    "iso_checksum_type": "",
+    "iso_file": "",
+    "kickstart_file": "",
     "memory": 1024,
+    "output_file": "",
     "ssh_password": "vagrant",
     "ssh_username": "root",
     "vagrantfile": "Vagrantfile",
     "vm_name": "packer-box"
-    "kickstart_file": null
   }
 }
 
