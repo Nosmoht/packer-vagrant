@@ -2,7 +2,7 @@
   "builders": [
     {
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks-oracle-linux-7.cfg<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `kickstart_file`}}<enter><wait>"
       ],
       "boot_wait": "12s",
       "disk_size": "{{user `harddisk_size_mb`}}",
@@ -57,7 +57,8 @@
     "ssh_password": "vagrant",
     "ssh_username": "root",
     "vagrantfile": "Vagrantfile",
-    "vm_name": "oracle-linux"
+    "vm_name": "packer-box"
+    "kickstart_file": null
   }
 }
 
